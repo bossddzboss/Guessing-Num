@@ -13,66 +13,61 @@ namespace Guessing_Num
             int guess = 0;
             int rMin = 0;
             int rMax = 0;
-                        
+
             dev();
-            user();
-        New://set New point
-            GetMinAndMaxNumber(out rMin, out rMax);            
-            //random
-            //GetRandomNumber(rMin,rMax);
-            Random random = new Random();
-            int correct = random.Next(rMin, rMax);
-            //print number
-            PrintNumber(rMin, rMax);
-            //check guess number
-            while (guess != correct)
+            user();            
+            do//Start loop play again
             {
-                //input number                
-                var tmp = getGuess(Console.ReadLine());
-                if (tmp.HasValue)
-                {
-                    guess = tmp.Value;
+                GetMinAndMaxNumber(out rMin, out rMax);                               
+                Random random = new Random(); //random number 
+                int correct = random.Next(rMin, rMax);  //random number               
+                PrintNumber(rMin, rMax);               
+                while (guess != correct)//check guess number
+                {                                    
+                    var tmp = getGuess(Console.ReadLine());//input number
+                    if (tmp.HasValue)//valid input number
+                    {
+                        guess = tmp.Value;
 
-                    if (guess > rMax || guess < rMin)
-                    {
-                        Console.WriteLine($"{Environment.NewLine}this number not in range");
-                    }
-                    else if (guess < correct)
-                    {
-                        ColorMes(ConsoleColor.White, $"{guess} is lower");
-                    }
-                    else if (guess > correct)
-                    {
-                        ColorMes(ConsoleColor.White, $"{guess} is higher");
-                    }
-                    else
-                    {
-                        /// กรณีคำตอบถูกต้อง                        
-                        ColorMes(ConsoleColor.Green, $"CORRECT{Environment.NewLine}");
-                        //do
-                        //{
-                        //    //TODO: config loop
-                        //    bool con  = AskContinue(correct);
-                        //    if (con == false) {
-                        //        break;
-                        //    }
-                        //    rMax = 0;
-                        //    rMin = 0;
-                        //    goto New;
-                        //} while (true);
-
-                        bool con2 = AskContinue(correct);
-                        if(con2 == true)
+                        if (guess > rMax || guess < rMin)
                         {
-                            goto New;
+                            Console.WriteLine($"{Environment.NewLine}this number not in range");
                         }
-                        
+                        else if (guess < correct)
+                        {
+                            ColorMes(ConsoleColor.White, $"{guess} is lower");
+                        }
+                        else if (guess > correct)
+                        {
+                            ColorMes(ConsoleColor.White, $"{guess} is higher");
+                        }
+                        else// when pass  
+                        {                                                 
+                            ColorMes(ConsoleColor.Green, $"CORRECT{Environment.NewLine}");
+                            //do
+                            //{
+                            //    //TODO: config loop
+                            //    bool con  = AskContinue(correct);
+                            //    if (con == false) {
+                            //        break;
+                            //    }
+                            //    rMax = 0;
+                            //    rMin = 0;
+                            //    goto New;
+                            //} while (true);
+                            bool con2 = AskContinue(correct);//valid char input
+                            if (con2 == true)//valid play again
+                            {//yes to continue
+                                break;
+                            }
+                            else
+                            {//no to exit
+                                return;
+                            }
+                        }
                     }
-                    
-                    // เล่นต่ออีกไหม?
-                   
                 }
-            }
+            } while (true);//End loop play again
         }
         static void dev()
         {
@@ -83,14 +78,12 @@ namespace Guessing_Num
             Console.WriteLine("What your name?");
             string playerName = Console.ReadLine();
             Console.WriteLine($"{Environment.NewLine}Hello {playerName}{Environment.NewLine}");
-
         }
         static int? getGuess(string input)
         {
             int? result = null;
-            var tmp = 0;
-            //valid string to int
-            if (!int.TryParse(input, out tmp))
+            var tmp = 0;            
+            if (!int.TryParse(input, out tmp))//valid string to int
             {
                 ColorMes(ConsoleColor.White, "please enter number");
             }
@@ -108,7 +101,6 @@ namespace Guessing_Num
                 Console.WriteLine("Please Enter a valid numerical value!");
                 Console.Write($"{word} range is:");
             }
-
             return rMin;
         }
         static bool AskContinue(int correct)
@@ -121,17 +113,15 @@ namespace Guessing_Num
                 answer = Console.ReadLine().ToUpper();
                 if (answer == "Y" || string.IsNullOrEmpty(answer))
                 {
-                    Console.WriteLine($"{Environment.NewLine}Enter number");
-                    //Console.Clear();    
-                    break;
+                    Console.WriteLine($"{Environment.NewLine}Enter number"); 
+                   break;//exit do loop
                 }
                 else if (answer == "N")
                 {                    
                     Console.WriteLine($"{Environment.NewLine}Correct number is {correct}");
                     Console.WriteLine("Press enter to exit");
-                    Console.ReadKey();
-                   
-                    return false ;
+                    Console.ReadKey();                   
+                    return false ;//exit function
                 }
                 else
                 {
@@ -140,8 +130,7 @@ namespace Guessing_Num
                 }
 
             } while (true);
-            return true;
-           
+            return true;//if continue           
         }
         static void GetMinAndMaxNumber(out int rMin, out int rMax)
         {
@@ -175,7 +164,6 @@ namespace Guessing_Num
         }
         static void PrintNumber(int rMin, int rMax)
         {
-
             for (int i = rMin; i <= rMax; i++)
             {
                 Console.Write($"{i} ");
@@ -191,24 +179,3 @@ namespace Guessing_Num
         }
     }
 }
-
-//    var answerwin = string.Empty;
-//    Console.WriteLine("play again y/n (Y)");
-//answ:
-//    answerwin = Console.ReadLine().ToUpper();
-//    if (answerwin == "Y" || string.IsNullOrEmpty(answerwin))
-//    {
-//        Console.Clear();
-//        rMax = 0;
-//        rMin = 0;
-//        goto New;
-//    }
-//    else if (answerwin == "N")
-//    {
-//        return;
-//    }
-//    else
-//    {
-//        Console.WriteLine("Please enter Y or N"); ;
-//        goto answ;
-//    }
