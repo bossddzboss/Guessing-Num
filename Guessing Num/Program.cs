@@ -13,13 +13,11 @@ namespace Guessing_Num
             int guess = 0;
             int rMin = 0;
             int rMax = 0;
-            int k = 0;
-
+                        
             dev();
             user();
         New://set New point
-            GetMinAndMaxNumber(out rMin, out rMax);
-
+            GetMinAndMaxNumber(out rMin, out rMax);            
             //random
             //GetRandomNumber(rMin,rMax);
             Random random = new Random();
@@ -51,16 +49,28 @@ namespace Guessing_Num
                     {
                         /// กรณีคำตอบถูกต้อง                        
                         ColorMes(ConsoleColor.Green, $"CORRECT{Environment.NewLine}");
-                        do
+                        //do
+                        //{
+                        //    //TODO: config loop
+                        //    bool con  = AskContinue(correct);
+                        //    if (con == false) {
+                        //        break;
+                        //    }
+                        //    rMax = 0;
+                        //    rMin = 0;
+                        //    goto New;
+                        //} while (true);
+
+                        bool con2 = AskContinue(correct);
+                        if(con2 == true)
                         {
-                            AskContinue(correct);
-                            rMax = 0;
-                            rMin = 0;
                             goto New;
-                        } while (true);
+                        }
+                        
                     }
+                    
                     // เล่นต่ออีกไหม?
-                    AskContinue(correct);
+                   
                 }
             }
         }
@@ -101,14 +111,12 @@ namespace Guessing_Num
 
             return rMin;
         }
-        static void AskContinue(int correct)
+        static bool AskContinue(int correct)
         {
             do
             {
-                int k = 1;
                 var answer = string.Empty; // ""
-                Console.WriteLine("play again y/n (Y)");
-
+                Console.WriteLine("play again Y/N (Y)");
             answ:
                 answer = Console.ReadLine().ToUpper();
                 if (answer == "Y" || string.IsNullOrEmpty(answer))
@@ -118,13 +126,12 @@ namespace Guessing_Num
                     break;
                 }
                 else if (answer == "N")
-                {
-
+                {                    
                     Console.WriteLine($"{Environment.NewLine}Correct number is {correct}");
                     Console.WriteLine("Press enter to exit");
                     Console.ReadKey();
-                    
-                    return ;
+                   
+                    return false ;
                 }
                 else
                 {
@@ -133,19 +140,18 @@ namespace Guessing_Num
                 }
 
             } while (true);
+            return true;
+           
         }
         static void GetMinAndMaxNumber(out int rMin, out int rMax)
         {
             Console.Write("Minimum range is:");
-
             //check number min
             rMin = checkNumber(Console.ReadLine(), "Minimum");
         Max://set Max point
             Console.Write("Maximum range is:");
             //check number max
             rMax = checkNumber(Console.ReadLine(), "Maximum");
-
-
             //check min max
             if (rMin == rMax)
             {
@@ -158,7 +164,6 @@ namespace Guessing_Num
                 Console.WriteLine("Max num cant lower than min num");
                 goto Max;
             }
-
             //print range number            
             Console.WriteLine($"{Environment.NewLine}Range of number : {rMin}-{rMax}");
         }
@@ -173,7 +178,6 @@ namespace Guessing_Num
 
             for (int i = rMin; i <= rMax; i++)
             {
-
                 Console.Write($"{i} ");
             }
             Console.WriteLine($"{ Environment.NewLine}");
@@ -181,7 +185,6 @@ namespace Guessing_Num
         }
         private static int GetRandomNumber(int rMin, int rMax)
         {
-
             Random random = new Random();
             int correct = random.Next(rMin, rMax);
             return correct;
