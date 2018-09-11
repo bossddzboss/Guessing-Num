@@ -1,0 +1,6 @@
+c:\users\pimwa\documents\visual studio 2015\Projects\Guessing Num\Guessing Num\bin\Debug\Guessing Num.exe.config
+c:\users\pimwa\documents\visual studio 2015\Projects\Guessing Num\Guessing Num\obj\Debug\Guessing Num.csprojResolveAssemblyReference.cache
+c:\users\pimwa\documents\visual studio 2015\Projects\Guessing Num\Guessing Num\bin\Debug\Guessing Num.exe
+c:\users\pimwa\documents\visual studio 2015\Projects\Guessing Num\Guessing Num\bin\Debug\Guessing Num.pdb
+c:\users\pimwa\documents\visual studio 2015\Projects\Guessing Num\Guessing Num\obj\Debug\Guessing Num.exe
+c:\users\pimwa\documents\visual studio 2015\Projects\Guessing Num\Guessing Num\obj\Debug\Guessing Num.pdb

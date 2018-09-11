@@ -1,0 +1,5 @@
+C:\Users\pimwa\Documents\Visual Studio 2015\Projects\Guessing Num\bin\Debug\ConsoleApplication.exe.config
+C:\Users\pimwa\Documents\Visual Studio 2015\Projects\Guessing Num\bin\Debug\ConsoleApplication.exe
+C:\Users\pimwa\Documents\Visual Studio 2015\Projects\Guessing Num\bin\Debug\ConsoleApplication.pdb
+C:\Users\pimwa\Documents\Visual Studio 2015\Projects\Guessing Num\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\pimwa\Documents\Visual Studio 2015\Projects\Guessing Num\obj\x86\Debug\ConsoleApplication.pdb
